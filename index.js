@@ -34,8 +34,18 @@ function createGrid(size) {
     square.style.width = squareSize + "px";
     square.style.height = squareSize + "px";
 
+    square.style.backgroundColor = "rgb(0,0,0)";
+    square.style.opacity = 0; // initial opacity
+
+    square.style.backgroundColor = "black";
+    square.style.opacity = 0; // Initial opacity
+
     square.addEventListener("mouseover", function () {
-      square.style.backgroundColor = "black";
+      let currentOpacity = parseFloat(square.style.opacity);
+      if (currentOpacity < 1) {
+        currentOpacity += 0.1;
+        square.style.opacity = currentOpacity;
+      }
     });
 
     container.appendChild(square);
