@@ -1,0 +1,17 @@
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allows items to move to the next row */
+  width: 400px;
+  /* Example fixed size */
+  height: 400px;
+  border: 2px solid black;
+}
+
+#container div {
+  /* This ensures each div is exactly 25% width for a 4x4 grid (16 total) */
+  flex: 0 0 25%;
+  height: 25%;
+  box-sizing: border-box;
+  /* Includes borders/padding in the 25% size */
+}
