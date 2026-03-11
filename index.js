@@ -33,15 +33,26 @@ function createGrid(size) {
 
     square.style.width = squareSize + "px";
     square.style.height = squareSize + "px";
+    square.style.backgroundColor = "rgb(0,0,0)";
+    square.style.opacity = 0; // initial opacity
+
     square.addEventListener("mouseover", function () {
-      // Generate random RGB
-      const r = Math.floor(Math.random() * 256);
-      const g = Math.floor(Math.random() * 256);
-      const b = Math.floor(Math.random() * 256);
+      let currentOpacity = parseFloat(square.style.opacity);
 
-      square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+      // Increase opacity by 0.1 per hover
+      if (currentOpacity < 1) {
+        currentOpacity += 0.1;
+        square.style.opacity = currentOpacity;
+
+        // Generate a random RGB color
+        const r = Math.floor(Math.random() * 256);
+        const g = Math.floor(Math.random() * 256);
+        const b = Math.floor(Math.random() * 256);
+
+        // Apply random color with current opacity
+        square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+      }
     });
-
     container.appendChild(square);
   }
 }
