@@ -33,19 +33,13 @@ function createGrid(size) {
 
     square.style.width = squareSize + "px";
     square.style.height = squareSize + "px";
-
-    square.style.backgroundColor = "rgb(0,0,0)";
-    square.style.opacity = 0; // initial opacity
-
-    square.style.backgroundColor = "black";
-    square.style.opacity = 0; // Initial opacity
-
     square.addEventListener("mouseover", function () {
-      let currentOpacity = parseFloat(square.style.opacity);
-      if (currentOpacity < 1) {
-        currentOpacity += 0.1;
-        square.style.opacity = currentOpacity;
-      }
+      // Generate random RGB
+      const r = Math.floor(Math.random() * 256);
+      const g = Math.floor(Math.random() * 256);
+      const b = Math.floor(Math.random() * 256);
+
+      square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
     });
 
     container.appendChild(square);
