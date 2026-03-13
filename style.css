@@ -1,48 +1,92 @@
+/* ---------- Global Styles ---------- */
 body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(to right, #B0BEC5, #78909C);
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 20px;
+  min-height: 100vh;
 }
 
-#container {
-  display: flex;
-  flex-wrap: wrap;
-  width: 960px;
-  height: 960px;
-  margin: 0 auto;
-  /* center the container */
-  border: 2px solid #444;
+h1 {
+  margin: 20px 0 10px;
+  font-size: 2em;
+  color: #333;
+  text-shadow: 1px 1px 2px #fff;
+  text-align: center;
 }
 
-.square {
-  width: 60px;
-  height: 60px;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+p#welcome {
+  font-size: 1.2em;
+  color: #444;
+  text-align: center;
+  margin-bottom: 20px;
+  max-width: 90%;
 }
 
+/* ---------- Buttons Container ---------- */
 #controls {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
-  /* space between buttons */
-  margin-bottom: 20px;
   justify-content: center;
-  /* center horizontally */
+  margin-bottom: 20px;
 }
 
 #controls button {
-  padding: 8px 12px;
+  padding: 10px 15px;
   font-size: 14px;
   cursor: pointer;
   border: 1px solid #444;
   background-color: #eee;
-  border-radius: 4px;
+  border-radius: 6px;
   transition: background-color 0.2s, transform 0.1s;
+  text-transform: uppercase;
 }
 
 #controls button:hover {
   background-color: #ddd;
   transform: scale(1.05);
+}
+
+/* ---------- Grid Container ---------- */
+#container-wrapper {
+  width: 90vw;
+  max-width: 960px;
+  aspect-ratio: 1;
+  /* square wrapper */
+  display: flex;
+  border: 2px solid #444;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+#container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Individual Squares ---------- */
+.square {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* ---------- Responsive adjustments ---------- */
+@media (max-width: 500px) {
+  h1 {
+    font-size: 1.5em;
+  }
+
+  p#welcome {
+    font-size: 1em;
+  }
+
+  #controls button {
+    font-size: 12px;
+    padding: 8px 12px;
+  }
 }

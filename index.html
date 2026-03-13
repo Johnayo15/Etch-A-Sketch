@@ -7,15 +7,29 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Welcome Text -->
+    <h1>Welcome to Etch-a-Sketch!</h1>
+    <p id="welcome">
+      Hover over the squares to draw. Use the buttons below to customize your
+      experience. Resize the grid, change colors, or hide grid lines as you
+      like.
+    </p>
+
+    <!-- Buttons -->
     <div id="controls">
+      <button id="resizeBtn">New Grid</button>
+      <button id="clearBtn">Clear Grid</button>
       <button id="blackBtn">Black</button>
       <button id="rainbowBtn">Rainbow</button>
       <button id="darkenBtn">Darken</button>
-      <button id="resizeBtn">New Grid</button>
-      <button id="clearBtn">Clear Grid</button>
       <button id="toggleGridBtn">Hide Grid Lines</button>
     </div>
-    <div id="container"></div>
+
+    <!-- Grid -->
+    <div id="container-wrapper">
+      <div id="container"></div>
+    </div>
+
     <script src="script.js"></script>
   </body>
 </html>

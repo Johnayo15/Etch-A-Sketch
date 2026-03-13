@@ -19,10 +19,8 @@ resizeBtn.addEventListener("click", function () {
   let size;
   while (true) {
     size = prompt("Enter number of squares per side (max 100):");
-
     if (size === null) return; // exit if canceled
     size = Number(size);
-
     if (Number.isInteger(size) && size > 0 && size <= 100) break;
     alert("Invalid input. Please enter a number between 1 and 100.");
   }
@@ -37,17 +35,16 @@ function addSquareBehavior(square) {
 // -------------------- Create Grid --------------------
 function createGrid(size) {
   container.innerHTML = ""; // clear existing squares
-  const squareSize = 960 / size; // calculate size per square
+  const squareSize = 100 / size; // percentage for responsive squares
 
   for (let i = 0; i < size * size; i++) {
     const square = document.createElement("div");
     square.classList.add("square");
-    square.style.width = squareSize + "px";
-    square.style.height = squareSize + "px";
+    square.style.width = squareSize + "%";
+    square.style.height = squareSize + "%";
     square.style.border = gridVisible ? "1px solid #ccc" : "none";
 
     addSquareBehavior(square); // initialize darkness
-
     container.appendChild(square);
   }
 }
@@ -55,8 +52,6 @@ function createGrid(size) {
 // -------------------- Hover Logic with Event Delegation --------------------
 container.addEventListener("mouseover", function (e) {
   const square = e.target;
-
-  // Only apply hover effects to squares
   if (!square.classList.contains("square")) return;
 
   let darkness = Number(square.dataset.darkness);
@@ -85,8 +80,8 @@ clearBtn.addEventListener("click", function () {
   const squares = document.querySelectorAll(".square");
   squares.forEach(function (square) {
     square.style.backgroundColor = "";
-    square.style.opacity = 1; // reset for darken mode
-    square.dataset.darkness = 0; // reset darkness counter
+    square.style.opacity = 1;
+    square.dataset.darkness = 0;
   });
 });
 
@@ -98,12 +93,10 @@ darkenBtn.addEventListener("click", () => (currentMode = "darken"));
 // -------------------- Grid Lines Toggle Button --------------------
 toggleGridBtn.addEventListener("click", function () {
   gridVisible = !gridVisible;
-
   const squares = document.querySelectorAll(".square");
   squares.forEach(function (square) {
     square.style.border = gridVisible ? "1px solid #ccc" : "none";
   });
-
   toggleGridBtn.textContent = gridVisible
     ? "Hide Grid Lines"
     : "Show Grid Lines";
