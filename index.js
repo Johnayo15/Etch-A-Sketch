@@ -17,10 +17,13 @@ button.addEventListener("click", function () {
   while (true) {
     size = prompt("Enter number of squares per side (max 100):");
 
-    // Convert to number
+    // If user presses Cancel
+    if (size === null) {
+      return;
+    }
+
     size = Number(size);
 
-    // Check conditions
     if (Number.isInteger(size) && size > 0 && size <= 100) {
       break;
     }
