@@ -10,7 +10,9 @@ body {
   flex-wrap: wrap;
   width: 960px;
   height: 960px;
-  border: 2px solid black;
+  margin: 0 auto;
+  /* center the container */
+  border: 2px solid #444;
 }
 
 .square {
@@ -18,4 +20,29 @@ body {
   height: 60px;
   border: 1px solid #ccc;
   box-sizing: border-box;
+}
+
+#controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* space between buttons */
+  margin-bottom: 20px;
+  justify-content: center;
+  /* center horizontally */
+}
+
+#controls button {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border: 1px solid #444;
+  background-color: #eee;
+  border-radius: 4px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+#controls button:hover {
+  background-color: #ddd;
+  transform: scale(1.05);
 }
