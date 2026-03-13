@@ -1,3 +1,4 @@
+let currentMode = "black"; // default drawing mode
 const container = document.querySelector("#container");
 for (let i = 0; i < 256; i++) {
   const square = document.createElement("div");
@@ -38,14 +39,19 @@ function addSquareBehavior(square) {
   let darkness = 0;
 
   square.addEventListener("mouseover", function () {
-    if (darkness < 10) {
-      darkness++;
-
+    if (currentMode === "black") {
+      square.style.backgroundColor = "black";
+    } else if (currentMode === "rainbow") {
       const r = Math.floor(Math.random() * 256);
       const g = Math.floor(Math.random() * 256);
       const b = Math.floor(Math.random() * 256);
-
-      square.style.backgroundColor = `rgba(${r}, ${g}, ${b}, ${darkness / 10})`;
+      square.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+    } else if (currentMode === "darken") {
+      if (darkness < 10) {
+        darkness++;
+        square.style.backgroundColor = "black";
+        square.style.opacity = darkness / 10;
+      }
     }
   });
 }
@@ -77,3 +83,12 @@ clearButton.addEventListener("click", function () {
     square.style.backgroundColor = "";
   });
 });
+
+//Update coloring mode
+const blackBtn = document.querySelector("#blackBtn");
+const rainbowBtn = document.querySelector("#rainbowBtn");
+const darkenBtn = document.querySelector("#darkenBtn");
+
+blackBtn.addEventListener("click", () => (currentMode = "black"));
+rainbowBtn.addEventListener("click", () => (currentMode = "rainbow"));
+darkenBtn.addEventListener("click", () => (currentMode = "darken"));
