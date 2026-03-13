@@ -12,14 +12,22 @@ for (let i = 0; i < 256; i++) {
 
 const button = document.querySelector("#resizeBtn");
 button.addEventListener("click", function () {
-  let size = prompt("Enter number of squares per side (max 100):");
+  let size;
 
-  if (size > 100) {
-    alert("Maximum allowed is 100");
-    return;
+  while (true) {
+    size = prompt("Enter number of squares per side (max 100):");
+
+    // Convert to number
+    size = Number(size);
+
+    // Check conditions
+    if (Number.isInteger(size) && size > 0 && size <= 100) {
+      break;
+    }
+
+    alert("Invalid input. Please enter a number between 1 and 100.");
   }
 
-  // Clear container and create new grid
   createGrid(size);
 });
 
@@ -33,6 +41,7 @@ function createGrid(size) {
 
     square.style.width = squareSize + "px";
     square.style.height = squareSize + "px";
+
     square.style.backgroundColor = "rgb(0,0,0)";
     square.style.opacity = 0; // initial opacity
 
