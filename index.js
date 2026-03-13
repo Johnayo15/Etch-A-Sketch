@@ -67,3 +67,13 @@ function createGrid(size) {
     container.appendChild(square);
   }
 }
+
+//Clear grid after drawing
+const clearButton = document.querySelector("#clearBtn");
+clearButton.addEventListener("click", function () {
+  const squares = document.querySelectorAll(".square");
+
+  squares.forEach(function (square) {
+    square.style.backgroundColor = "";
+  });
+});
